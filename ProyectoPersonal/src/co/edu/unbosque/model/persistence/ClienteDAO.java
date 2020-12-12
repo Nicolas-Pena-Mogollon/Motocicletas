@@ -17,7 +17,7 @@ public class ClienteDAO {
 		this.archivoClientes.escribirArchivoClientes(clienteDTOs);
 	}
 
-	public ArrayList<ClienteDTO> leerMoto() {
+	public ArrayList<ClienteDTO> leerCliente() {
 		this.clienteDTOs = this.archivoClientes.leerArchivoClientes();
 		return this.clienteDTOs;
 	}
