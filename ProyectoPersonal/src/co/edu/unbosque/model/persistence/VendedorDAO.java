@@ -37,7 +37,7 @@ public class VendedorDAO {
 				} else if (!(sueldo == 0)) {
 					vendedorDTO.setSueldo(sueldo);
 				}
-				this.archivoVendedor.escribirArchivoVendedor(vendedorDTO);
+				this.archivoVendedor.escribirArchivoVendedor(this.vendedorDTO);
 				return verificar = true;
 			} else {
 				verificar = false;
