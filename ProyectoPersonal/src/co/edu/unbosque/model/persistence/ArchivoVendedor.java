@@ -10,19 +10,19 @@ import java.util.ArrayList;
 
 public class ArchivoVendedor {
 
-	private final String rutaArchivoClientes = "./DATALOCAL/clientes.dat";
+	private final String rutaArchivoVendedor = "./DATALOCAL/vendedor.dat";
 	private File file;
 	private ObjectInputStream ois;
 	private ObjectOutputStream oos;
 
 	public ArchivoVendedor() {
-		this.file = new File(rutaArchivoClientes);
+		this.file = new File(rutaArchivoVendedor);
 	}
 
-	public void escribirArchivoClientes(ArrayList<ClienteDTO> clientes) {
+	public void escribirArchivoVendedor(ArrayList<VendedorDTO> vendedor) {
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream(file));
-			oos.writeObject(clientes);
+			oos.writeObject(vendedor);
 			oos.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -30,12 +30,12 @@ public class ArchivoVendedor {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<ClienteDTO> leerArchivoClientes() {
+	public ArrayList<VendedorDTO> leerArchivoVendedor() {
 		try {
 			ois = new ObjectInputStream(new FileInputStream(file));
-			ArrayList<ClienteDTO> motos = (ArrayList<ClienteDTO>) ois.readObject();
+			ArrayList<VendedorDTO> vendedor = (ArrayList<VendedorDTO>) ois.readObject();
 			ois.close();
-			return motos;
+			return vendedor;
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
