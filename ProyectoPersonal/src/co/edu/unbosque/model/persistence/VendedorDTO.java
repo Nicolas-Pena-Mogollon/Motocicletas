@@ -1,7 +1,6 @@
 package co.edu.unbosque.model.persistence;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class VendedorDTO implements Serializable {
 
@@ -10,14 +9,14 @@ public class VendedorDTO implements Serializable {
 	private String nombre;
 	private String celular;
 	private String direccion;
-	private Date fecha;
+	private double sueldo;
 
-	public VendedorDTO(String documentoVendedor, String nombre, String celular, String direccion, Date fecha) {
+	public VendedorDTO(String documentoVendedor, String nombre, String celular, String direccion, double sueldo) {
 		this.documentoVendedor = documentoVendedor;
 		this.nombre = nombre;
 		this.celular = celular;
 		this.direccion = direccion;
-		this.fecha = fecha;
+		this.sueldo = sueldo;
 	}
 
 	/**
@@ -77,17 +76,17 @@ public class VendedorDTO implements Serializable {
 	}
 
 	/**
-	 * @return the fecha
+	 * @return the sueldo
 	 */
-	public Date getFecha() {
-		return fecha;
+	public double getSueldo() {
+		return sueldo;
 	}
 
 	/**
-	 * @param fecha the fecha to set
+	 * @param sueldo the sueldo to set
 	 */
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setSueldo(double sueldo) {
+		this.sueldo = sueldo;
 	}
 
 	/**

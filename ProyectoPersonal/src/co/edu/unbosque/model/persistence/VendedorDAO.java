@@ -1,7 +1,6 @@
 package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class VendedorDAO {
 
@@ -13,14 +12,38 @@ public class VendedorDAO {
 		this.archivoVendedor = new ArchivoVendedor();
 	}
 
-	public void crearVendedor(String documentoVendedor, String nombre, String celular, String direccion, Date fecha) {
-		this.vendedorDTO.add(new VendedorDTO(documentoVendedor, nombre, celular, direccion, fecha));
+	public void crearVendedor(String documentoVendedor, String nombre, String celular, String direccion,
+			double sueldo) {
+		this.vendedorDTO.add(new VendedorDTO(documentoVendedor, nombre, celular, direccion, sueldo));
 		this.archivoVendedor.escribirArchivoVendedor(vendedorDTO);
 	}
 
 	public ArrayList<VendedorDTO> leerVendedor() {
 		this.vendedorDTO = this.archivoVendedor.leerArchivoVendedor();
 		return this.vendedorDTO;
+	}
+
+	public boolean editarVendedor(String documentoVendedor, String nombre, String celular, String direccion,
+			double sueldo) {
+		boolean verificar = false;
+		for (VendedorDTO vendedorDTO : vendedorDTO) {
+			if (documentoVendedor.equals(vendedorDTO.getDocumentoVendedor())) {
+			 if (!nombre.equals("")) {
+					vendedorDTO.setNombre(nombre);
+				} else if (!celular.equals("")) {
+					vendedorDTO.setCelular(celular);
+				} else if (!direccion.equals("")) {
+					vendedorDTO.setDireccion(direccion);
+				} else if (!(sueldo == 0)) {
+					vendedorDTO.setSueldo(sueldo);
+				}
+				this.archivoVendedor.escribirArchivoVendedor(vendedorDTO);
+				return verificar = true;
+			} else {
+				verificar = false;
+			}
+		}
+		return verificar;
 	}
 
 	public String eliminarVendedor(String documentoVendedor) {
